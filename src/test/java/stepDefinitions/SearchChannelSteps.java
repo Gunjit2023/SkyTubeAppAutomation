@@ -3,11 +3,15 @@ package stepDefinitions;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
 import pageObject.SearchChannelModule;
+import utils.LoggerUtil;
 
 import static org.testng.Assert.*;
 
 public class SearchChannelSteps extends BaseSteps {
+
+    private static final Logger logger = LoggerUtil.getLogger(SearchChannelSteps.class);
 
     @Given("the app is launched")
     public void the_app_is_launched() {

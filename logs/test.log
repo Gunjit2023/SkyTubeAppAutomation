@@ -1,0 +1,22 @@
+2025-04-24 10:41:19 INFO  - [TestNG] Running:
+  C:\Users\Gurbax Gill\IdeaProjects\MobileAutomation\SKyTubeAutomation\testng.xml
+
+2025-04-24 10:41:20 INFO  - Starting Scenario: Search for an existing channel by name
+2025-04-24 10:41:21 INFO  - 📱 Initializing AndroidDriver with Appium...
+2025-04-24 10:42:58 INFO  - [TestNG] Running:
+  C:\Users\Gurbax Gill\IdeaProjects\MobileAutomation\SKyTubeAutomation\testng.xml
+
+2025-04-24 10:42:59 INFO  - Starting Scenario: Search for an existing channel by name
+2025-04-24 10:42:59 INFO  - 📱 Initializing AndroidDriver with Appium...
+2025-04-24 10:45:52 INFO  - [TestNG] Running:
+  C:\Users\Gurbax Gill\IdeaProjects\MobileAutomation\SKyTubeAutomation\testng.xml
+
+2025-04-24 10:45:53 INFO  - Starting Scenario: Search for an existing channel by name
+2025-04-24 10:45:53 INFO  - 📱 Initializing AndroidDriver with Appium...
+2025-04-24 10:46:01 INFO  - ✅ AndroidDriver session started
+2025-04-24 10:46:01 INFO  - Starting Step: Search for an existing channel by name
+2025-04-24 10:46:11 INFO  - Finished Step: Search for an existing channel by name
+2025-04-24 10:46:11 INFO  - Finished Scenario: Search for an existing channel by name
+2025-04-24 10:46:11 INFO  - Scenario Status: PASSED
+2025-04-24 10:46:11 INFO  - Quitting AndroidDriver session...
+2025-04-24 10:46:11 INFO  - AndroidDriver session closed

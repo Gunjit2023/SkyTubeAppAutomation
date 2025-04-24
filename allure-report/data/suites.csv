@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"broken","Tue Apr 22 14:01:32 PDT 2025","Tue Apr 22 14:01:32 PDT 2025","39","","Subscribe and Unsubscribe from channels in SkyTube app","","Unsubscribe from a channel","","Unsubscribe from a channel",""
+"broken","Tue Apr 22 14:01:31 PDT 2025","Tue Apr 22 14:01:31 PDT 2025","54","","Search functionality in SkyTube app","","Search for a non-existing channel","","Search for a non-existing channel",""
+"broken","Tue Apr 22 14:01:31 PDT 2025","Tue Apr 22 14:01:31 PDT 2025","46","","Subscribe and Unsubscribe from channels in SkyTube app","","Subscribe to a channel from search results","","Subscribe to a channel from search results",""
+"broken","Tue Apr 22 14:01:32 PDT 2025","Tue Apr 22 14:01:32 PDT 2025","36","","Subscribe and Unsubscribe from channels in SkyTube app","","Attempt to unsubscribe from a non-subscribed channel","","Attempt to unsubscribe from a non-subscribed channel",""
+"passed","Wed Apr 23 11:40:16 PDT 2025","Wed Apr 23 11:40:50 PDT 2025","33715","","Search functionality in SkyTube app","","Search for an existing channel by name","","Search for an existing channel by name",""
+"broken","Tue Apr 22 14:01:31 PDT 2025","Tue Apr 22 14:01:31 PDT 2025","70","","Search functionality in SkyTube app","","Search with special characters","","Search with special characters",""

@@ -2,7 +2,7 @@ Feature: Search functionality in SkyTube app
 
   Scenario: Search for an existing channel by name
     Given the app is launched
-#    When the user enters "MrBeast" in the search bar
+    When the user enters "MrBeast" in the search bar
 #    Then the channel "MrBeast" should appear in the results
 
 #  Scenario: Search for a non-existing channel

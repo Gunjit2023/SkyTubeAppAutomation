@@ -1,0 +1,7 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","Subscribe and Unsubscribe from channels in SkyTube app","Unsubscribe from a channel","0","1","0","0","0"
+"","Search functionality in SkyTube app","Search for a non-existing channel","0","1","0","0","0"
+"","Subscribe and Unsubscribe from channels in SkyTube app","Subscribe to a channel from search results","0","1","0","0","0"
+"","Subscribe and Unsubscribe from channels in SkyTube app","Attempt to unsubscribe from a non-subscribed channel","0","1","0","0","0"
+"","Search functionality in SkyTube app","Search for an existing channel by name","0","0","1","0","0"
+"","Search functionality in SkyTube app","Search with special characters","0","1","0","0","0"

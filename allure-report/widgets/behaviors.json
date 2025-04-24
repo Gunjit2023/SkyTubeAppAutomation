@@ -1,0 +1,1 @@
+{"total":2,"items":[{"uid":"1c1bd2b7737561f384458f7fd4ac9df5","name":"Subscribe and Unsubscribe from channels in SkyTube app","statistic":{"failed":0,"broken":3,"skipped":0,"passed":0,"unknown":0,"total":3}},{"uid":"9a4f27e7971fd1ce7bacba541aa95f1b","name":"Search functionality in SkyTube app","statistic":{"failed":0,"broken":2,"skipped":0,"passed":1,"unknown":0,"total":3}}]}

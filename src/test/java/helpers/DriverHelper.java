@@ -72,21 +72,4 @@ public class DriverHelper {
             if (!canScrollMore) break;
         }
     }
-
-    public void scrollToTopOfPage() {
-        boolean canScrollMore = true;
-
-        while (canScrollMore) {
-            canScrollMore = (Boolean) ((JavascriptExecutor) driver).executeScript(
-                    "mobile: scrollGesture",
-                    Map.of(
-                            "left", 100, "top", 100, "width", 800, "height", 1500,
-                            "direction", "up",
-                            "percent", 0.9
-                    )
-            );
-        }
-    }
-
-
 }

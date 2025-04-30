@@ -74,11 +74,6 @@ public class SubscribeUnsubscribeChannelSteps extends BaseSteps {
         subscribeUnsubscribeChannel.subscribe_last_channel();
     }
 
-//    @When("the user scrolls back to the top of the search results")
-//    public void scroll_to_top_of_page() {
-//        driverHelper.scrollToTopOfPage();
-//    }
-
     @Step("the user searches for the subscribed channel")
     @When("the user searches for the subscribed channel")
     public void user_search_subscribed_channel() {

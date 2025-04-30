@@ -1,39 +1,40 @@
 package stepDefinitions;
 
+import helpers.BaseSteps;
 import io.cucumber.java.en.*;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import pageObject.SearchChannelModule;
 import utils.LoggerUtil;
-
-import static org.testng.Assert.*;
 
 public class SearchChannelSteps extends BaseSteps {
     SearchChannelModule searchChannel = new SearchChannelModule();
 
     private static final Logger logger = LoggerUtil.getLogger(SearchChannelSteps.class);
 
+    @Step("the app is launched")
     @Given("the app is launched")
     public void the_app_is_launched() {
-        waitForAppLaunchAndDismissPopup();
-        driverHelper.clickIfVisible(searchChannel.skyTubeHamburger, 5);
+        searchChannel.launch_app();
     }
 
     @Step("User searches for {string}")
     @When("the user enters {string} in the search bar")
     public void the_user_enters_in_the_search_bar(String query) {
-        driverHelper.clickIfVisible(searchChannel.searchText, 5);
-//        driver.findElement(By.id("free.rm.skytube:id/menu_search")).click();
-        driver.findElement(searchChannel.searchText).sendKeys(query);
-
+        searchChannel.the_user_searched_for(query);
     }
 
     @Step("User should see channel {string} in results")
     @Then("the channel {string} should appear in the results")
     public void the_channel_should_appear_in_the_results(String channelName) {
-        boolean isFound = !driver.findElements(By.xpath("//*[contains(@text,'" + channelName + "')]")).isEmpty();
-        assertTrue(isFound, "Channel " + channelName + " not found.");
+        searchChannel.verifyChannelVisible(channelName);
+    }
+
+    @Step("no results should be displayed")
+    @Then("no results should be displayed")
+    public void no_results_should_be_displayed() throws InterruptedException {
+        searchChannel.channelNotVisible();
+
     }
 }
 

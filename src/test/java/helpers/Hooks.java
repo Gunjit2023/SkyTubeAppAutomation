@@ -1,20 +1,16 @@
-package stepDefinitions;
+package helpers;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import utils.LoggerUtil;
-import utils.Properties.AppConfig;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.net.URI;
-import java.net.URL;
 import java.util.Properties;
 
 public class Hooks {
@@ -35,9 +31,11 @@ public class Hooks {
         options.setPlatformName("Android");
         options.setDeviceName("Pixel6_LambdaTestAppiumSeries");
         options.setAutomationName("UiAutomator2");
+//        options.setAppPackage("free.rm.skytube.oss");  // SkyTube package
+//        options.setAppActivity("free.rm.skytube.activities.MainActivity"); // SkyTube main activity
         options.setApp(appPath);
         options.setAppWaitActivity("*");
-        options.setNoReset(true);
+        options.setNoReset(false);
 
         logger.info("📱 Initializing AndroidDriver with Appium...");
         driver = new AndroidDriver(new URI("http://127.0.0.1:4723/").toURL(), options);

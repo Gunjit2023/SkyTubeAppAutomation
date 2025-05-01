@@ -14,7 +14,8 @@ Feature: Subscribe and Unsubscribe from channels in SkyTube app
     Then the button should change back to Subscribe
 
   Scenario: Attempt to unsubscribe from a non-subscribed channel
-    Given the user is not subscribed to channel "BBC News"
+    Given the app is launched
+    And the user is not subscribed to channel "BBC News"
     When the user views the channel page for "BBC News"
     Then the Subscribe button for the channel "BBC News" should be visible
 

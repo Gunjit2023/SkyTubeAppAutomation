@@ -31,8 +31,6 @@ public class Hooks {
         options.setPlatformName("Android");
         options.setDeviceName("Pixel6_LambdaTestAppiumSeries");
         options.setAutomationName("UiAutomator2");
-//        options.setAppPackage("free.rm.skytube.oss");  // SkyTube package
-//        options.setAppActivity("free.rm.skytube.activities.MainActivity"); // SkyTube main activity
         options.setApp(appPath);
         options.setAppWaitActivity("*");
         options.setNoReset(false);

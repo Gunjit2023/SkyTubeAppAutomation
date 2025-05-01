@@ -48,15 +48,28 @@ public class DriverHelper {
         }
     }
 
-    public boolean waitForToastMessage(String expectedToastText, int timeoutInSeconds) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+//    public boolean waitForToastMessage(String expectedToastText, int timeoutInSeconds) {
+//        try {
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+//            return wait.until(ExpectedConditions.presenceOfElementLocated(
+//                    By.xpath("//android.widget.Toast[@text='" + expectedToastText + "']")
+//            )) != null;
+//        } catch (Exception e) {
+//            System.out.println("Toast not found: " + e.getMessage());
+//            return false;
+//        }
+//    }
+
+    public boolean isToastMessageDisplayed(String expectedMessage, int timeoutInSeconds) {
         try {
-            return wait.until(driver -> driver.getPageSource().contains(expectedToastText));
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+            return wait.until(ExpectedConditions.presenceOfElementLocated(
+                    By.xpath(".//*[contains(@text,'" + expectedMessage + "')]"))) != null;
         } catch (Exception e) {
-            System.out.println("Toast message not found: " + expectedToastText);
             return false;
         }
     }
+
 
     public void scrollToLastVisibleChannel() {
         // Scroll until we reach the bottom

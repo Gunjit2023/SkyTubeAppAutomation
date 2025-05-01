@@ -1,10 +1,7 @@
 package stepDefinitions;
 
 import helpers.BaseSteps;
-import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 import io.qameta.allure.Step;
 import org.slf4j.Logger;
 import pageObject.SearchChannelModule;
@@ -12,27 +9,33 @@ import pageObject.SubscribeUnsubscribeChannel;
 import utils.LoggerUtil;
 
 public class SubscribeUnsubscribeChannelSteps extends BaseSteps {
-    SubscribeUnsubscribeChannel subscribeUnsubscribeChannel = new SubscribeUnsubscribeChannel();
-    SearchChannelModule searchChannel = new SearchChannelModule();
 
     private static final Logger logger = LoggerUtil.getLogger(SubscribeUnsubscribeChannelSteps.class);
+    private final SubscribeUnsubscribeChannel subscribeUnsubscribeChannel;
+    private final SearchChannelModule searchChannelModule;
+
+    public SubscribeUnsubscribeChannelSteps() {
+        super(); // initializes 'driver' from Hooks
+        this.searchChannelModule = new SearchChannelModule(driver);
+        this.subscribeUnsubscribeChannel = new SubscribeUnsubscribeChannel(driver);
+    }
+
 
     @Step("the user is not subscribed to channel {string}")
-    @Given("the user is not subscribed to channel {string}")
-    public void the_user_is_not_subscribed_to_channel(String channelName){
-        searchChannel.launch_app();
-        searchChannel.the_user_searched_for(channelName);
+    @And("the user is not subscribed to channel {string}")
+    public void the_user_is_not_subscribed_to_channel(String channelName) {
+        searchChannelModule.the_user_searched_for(channelName);
     }
 
     @Step("the user views the channel page for {string}")
     @When("the user views the channel page for {string}")
-    public void the_user_views_the_channel_page(String channelName){
-        searchChannel.verifyChannelVisible(channelName);
+    public void the_user_views_the_channel_page(String channelName) {
+        searchChannelModule.verifyChannelVisible(channelName);
     }
 
     @Step("the Subscribe button for the channel {string} should be visible")
     @Then("the Subscribe button for the channel {string} should be visible")
-    public void the_subscribe_button_is_visible(String channelName){
+    public void the_subscribe_button_is_visible(String channelName) {
         subscribeUnsubscribeChannel.user_not_subscribed_to_channel(channelName);
     }
 
@@ -52,7 +55,7 @@ public class SubscribeUnsubscribeChannelSteps extends BaseSteps {
     @Step("the user is subscribed to {string}")
     @And("the user is subscribed to {string}")
     public void user_is_subscribed(String channelName) {
-        searchChannel.the_user_searched_for(channelName);
+        searchChannelModule.the_user_searched_for(channelName);
         subscribeUnsubscribeChannel.the_user_taps_subscribe(channelName);
     }
 

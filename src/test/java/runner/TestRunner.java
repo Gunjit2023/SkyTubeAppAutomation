@@ -11,9 +11,9 @@ import io.cucumber.testng.CucumberOptions;
         "json:target/cucumber-reports/report.json", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" }, // reporting
         // purpose
         monochrome = true, // console output color
-//		tags = "@registertest", // tags from feature file
+//		tags = "@onlyThis", // tags from feature file
         features = { "src/test/resources/features" }, // location of feature files - folder name
-        glue = "stepDefinitions") // location of step definition files - package name
+        glue = {"stepDefinitions","helpers"})// location of step definition files - package name
 
 
 public class TestRunner extends AbstractTestNGCucumberTests {

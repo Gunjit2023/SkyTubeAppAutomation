@@ -8,14 +8,16 @@ import pageObject.SearchChannelModule;
 import utils.LoggerUtil;
 
 public class SearchChannelSteps extends BaseSteps {
-    SearchChannelModule searchChannel = new SearchChannelModule();
 
     private static final Logger logger = LoggerUtil.getLogger(SearchChannelSteps.class);
+    private SearchChannelModule searchChannel;
 
-    @Step("the app is launched")
+
     @Given("the app is launched")
     public void the_app_is_launched() {
-        searchChannel.launch_app();
+        initDriver();  // This initializes driver and driverHelper
+        searchChannel = new SearchChannelModule(driver); // Safely initialize after driver is ready
+        waitForAppLaunchAndDismissPopup();
     }
 
     @Step("User searches for {string}")
@@ -34,7 +36,12 @@ public class SearchChannelSteps extends BaseSteps {
     @Then("no results should be displayed")
     public void no_results_should_be_displayed() throws InterruptedException {
         searchChannel.channelNotVisible();
+    }
 
+    @Step("no channel result should be shown")
+    @Then("no channel result should be shown")
+    public void no_channel_result_should_be_shown() throws InterruptedException {
+        searchChannel.no_channel_results_should_be_shown();
     }
 }
 

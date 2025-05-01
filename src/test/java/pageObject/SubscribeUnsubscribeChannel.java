@@ -1,22 +1,28 @@
 package pageObject;
 
+import helpers.DriverHelper;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-import helpers.BaseSteps;
-
 import java.util.List;
 import java.util.NoSuchElementException;
-
-import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
-public class SubscribeUnsubscribeChannel extends BaseSteps {
+public class SubscribeUnsubscribeChannel{
 
-    SearchChannelModule searchChannel = new SearchChannelModule();
+
+    private final AndroidDriver driver;
+    private final DriverHelper driverHelper;
+    private final SearchChannelModule searchChannel;
+
+    public SubscribeUnsubscribeChannel(AndroidDriver driver) {
+        this.driver = driver;
+        this.driverHelper = new DriverHelper(driver);
+        this.searchChannel = new SearchChannelModule(driver); // Inject driver correctly
+    }
 
     public By optionsButton = By.id("free.rm.skytube.oss:id/options_button");
-    public By channelLink = By.xpath("//android.widget.TextView[@resource-id=\"free.rm.skytube.oss:id/title\" and @text=\"Channel...\"]");
     public By channelArrow = By.id("free.rm.skytube.oss:id/submenuarrow");
     public By subscribeLinkId = By.id("free.rm.skytube.oss:id/channel_subscribe_button");
     public By subscribeLink = By.xpath("//android.widget.TextView[@resource-id=\"free.rm.skytube.oss:id/title\" and @text=\"Subscribe\"]");
@@ -25,11 +31,12 @@ public class SubscribeUnsubscribeChannel extends BaseSteps {
     public By channelName = By.id("free.rm.skytube.oss:id/sub_channel_name_text_view");
 
     public void unsubscribe_from_channel() {
+        driverHelper.isElementVisible(channelName,5);
         driverHelper.clickIfVisible(optionsButton, 5);
         driverHelper.clickIfVisible(channelArrow, 5);
         driverHelper.clickIfVisible(unsubscribeLink, 5);
-        boolean isToastVisible = driverHelper.waitForToastMessage("Unsubscribed", 10);
-        Assert.assertTrue(isToastVisible, "Unsubscribed");
+        boolean isToastVisible = driverHelper.isToastMessageDisplayed("Unsubscribed", 10);
+        Assert.assertTrue(isToastVisible, "Error toast message is not displayed!");
     }
 
     public void change_subscribed_to_unsubscribed() {

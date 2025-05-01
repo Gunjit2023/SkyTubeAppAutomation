@@ -8,8 +8,8 @@ Feature: Search functionality in SkyTube app
   Scenario: Search for a non-existing channel
     Given the app is launched
     When the user enters "UnknownChannelXYZ123456" in the search bar
-    Then no results should be displayed
-#
+    Then no channel result should be shown
+
   Scenario: Search with special characters
     Given the app is launched
     When the user enters "@#$%^&*" in the search bar

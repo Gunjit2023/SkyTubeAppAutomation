@@ -68,9 +68,11 @@ public class DownloadsModule extends BaseSteps{
 		
 		WebElement videotitle=driverHelper.waitForElementVisible(NameOfDownloadVideo, 5);
 		String name=videotitle.getText();
-
+	
 		driverHelper.clickIfVisible(GoBack, 5);
 		driverHelper.clickIfVisible(DownloadTab, 5);
+		
+		driverHelper.waitForElementVisible(DownloadedVideo, 5);
 	}
 
   public void deleteDownloadedVideo()

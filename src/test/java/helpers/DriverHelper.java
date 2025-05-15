@@ -85,4 +85,28 @@ public class DriverHelper {
             if (!canScrollMore) break;
         }
     }
+	public String getTextIfVisible(By locator, int timeoutInSeconds) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			String text = element.getText();
+			return text;
+		} catch (Exception e) {
+			System.out.println("Text not visible: " + locator);
+			return "Text not visible";
+		}
+	}
+
+	public String getToastMessageIfVisible(By locator, int timeoutInSeconds) {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds));
+			WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			String text = element.getAttribute("name");
+			return text;
+		} catch (Exception e) {
+			System.out.println("Text not visible: " + locator);
+			return "Text not visible";
+		}
+	}
+
 }

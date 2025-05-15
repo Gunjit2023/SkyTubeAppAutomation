@@ -2,30 +2,43 @@ package helpers;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.cucumber.java.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.slf4j.Logger;
+
+import utils.Properties.AppConfig;
+import utils.ExcelReader;
 import utils.LoggerUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class Hooks {
     public static AndroidDriver driver;
     private static final Logger logger = LoggerUtil.getLogger(Hooks.class);
+    public AppiumDriverLocalService service;
+    static AppConfig reader = new AppConfig();
+	public static Map<String, Map<String, String>> testCaseDataMap = new HashMap<>();
 
 
 
     @Before
-    public void setUp(Scenario scenario) throws Exception {
+    public void setUp(Scenario scenario) throws Throwable {
+    	
         logger.info("Starting Scenario: {}", scenario.getName());
-        Properties properties = new Properties();
-        properties.load(new FileInputStream("src/main/resources/config.properties"));
-        String relativePath = properties.getProperty("app.path");
-        String appPath = new File(relativePath).getAbsolutePath();
+        AppConfig.loadConfig();
+        String appPath = AppConfig.getAppPath();
+        
+		service =  new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\s_bor\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
+				.withIPAddress("192.168.1.183").usingPort(4723).build();
+		service.start();
 
         UiAutomator2Options options = new UiAutomator2Options();
         options.setPlatformName("Android");
@@ -36,9 +49,8 @@ public class Hooks {
         options.setNoReset(false);
 
         logger.info("📱 Initializing AndroidDriver with Appium...");
-        driver = new AndroidDriver(new URI("http://127.0.0.1:4723/").toURL(), options);
+        driver = new AndroidDriver(new URI("http://192.168.1.183:4723/").toURL(), options);
         logger.info("✅ AndroidDriver session started");
-
     }
 
     @After
@@ -81,4 +93,18 @@ public class Hooks {
     public void afterStep(Scenario scenario) {
         logger.info("Finished Step: {}", scenario.getName());
     }
+    
+    @After
+    public void closeService() {
+        service.stop();
+    }
+
+    //Load all test cases for all Preferences combinations
+    @Before
+    public void loadTestCases() throws Throwable {
+    	AppConfig.loadConfig();
+		ExcelReader excelReader = new ExcelReader(AppConfig.getExcelPath(), "Preferences");
+		testCaseDataMap = excelReader.readAllTestCases(); 
+		System.out.println("Login test cases loaded successfully!" + testCaseDataMap.keySet());
+	}
 }

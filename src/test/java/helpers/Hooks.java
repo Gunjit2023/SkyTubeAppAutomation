@@ -16,6 +16,7 @@ import utils.LoggerUtil;
 import java.io.File;
 import java.io.FileInputStream;
 import java.net.URI;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -47,6 +48,7 @@ public class Hooks {
         options.setApp(appPath);
         options.setAppWaitActivity("*");
         options.setNoReset(false);
+        options.setNewCommandTimeout(Duration.ofSeconds(500));
 
         logger.info("📱 Initializing AndroidDriver with Appium...");
         driver = new AndroidDriver(new URI("http://192.168.1.183:4723/").toURL(), options);
